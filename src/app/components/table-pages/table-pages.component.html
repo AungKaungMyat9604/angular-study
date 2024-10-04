@@ -5,6 +5,7 @@
         mat-icon-button
         [attr.active]="$index + 1 == activePage"
         color="primary"
+        (click)="selectPage($index)"
       >
         {{ $index + 1 }}
       </button>

@@ -1,92 +1,28 @@
 <div class="app-window">
   <div class="header">
-    <div class="title">User Lists</div>
+    <div class="title">User Lists (Page No: {{ activePage }})</div>
+    <div class="page-status">
+      <p class="page-list">FirstPage: {{ firstPage ? 'Yes' : 'No' }}</p>
+      <p class="page-list">LastPage: {{ lastPage ? 'Yes' : 'No' }}</p>
+    </div>
   </div>
   <div class="body">
     <div class="content-container">
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
-      <p>This is content.</p>
+      @for (user of usersList; track $index) {
+        <div class="user">{{ $index + 1 }}. {{ user.name }}</div>
+      }
     </div>
-    <app-table-pages
-      [activePage]="2"
-      [pageList]="parentPageList"
-    ></app-table-pages>
+    <div class="table-footer">
+      <app-table-pages
+        [activePage]="activePage"
+        [pageList]="parentPageList"
+        (onPageChanged)="pageChanged($event)"
+      ></app-table-pages>
+
+      <app-table-first-last
+        (onFirstPage)="firstPageChanged($event)"
+        (onLastPage)="lastPageChanged($event)"
+      ></app-table-first-last>
+    </div>
   </div>
 </div>

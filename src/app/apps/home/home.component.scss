@@ -5,11 +5,21 @@
   overflow: hidden;
 
   .header {
+    display: flex;
     padding: 16px;
 
     .title {
       font-weight: bold;
       font-size: x-large;
+    }
+
+    .page-status {
+      display: flex;
+      align-items: center;
+
+      .page-list {
+        margin: 0px 16px;
+      }
     }
   }
 
@@ -22,17 +32,26 @@
     .content-container {
       flex: 1;
       display: flex;
-      margin: 4px;
       flex-direction: column;
       overflow: auto;
 
-      p {
-        padding: 4px 0px;
+      .user {
+        margin: 4px 0px;
+        padding: 8px;
+        background: lightblue;
       }
     }
-    
+
     app-table-pages {
       background-color: lightyellow;
+    }
+
+    .table-footer {
+      display: flex;
+      flex-direction: row;
+      background: lightyellow;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

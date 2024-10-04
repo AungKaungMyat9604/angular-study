@@ -1,10 +1,4 @@
-import {
-  Component,
-  inject,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnDestroy, SimpleChanges } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,13 +24,10 @@ import { Router } from '@angular/router';
     //Components
   ],
 })
-export class SigninComponent implements OnChanges {
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
-  private route = inject(Router);
+export class SigninComponent {
+  // private route = inject(Router);
 
-  constructor() {}
+  constructor(private route: Router) {}
   goToHome() {
     this.route.navigate(['home'], { replaceUrl: false });
   }
