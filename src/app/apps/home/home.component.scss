@@ -23,6 +23,13 @@
       flex: 1;
       display: flex;
       margin: 4px;
+    background-color: lightblue;
+    overflow: hidden;
+    
+    .content-container {
+      flex: 1;
+      display: flex;
+      background: red;
       flex-direction: column;
       overflow: auto;
 
@@ -33,5 +40,8 @@
     app-table-pages {
       background-color: lightyellow;
     }
+        background-color: green;
+        padding: 4px 0px;
+      }
+    }
   }
-}
