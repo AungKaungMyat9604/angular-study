@@ -1,21 +1,24 @@
 import { Component } from '@angular/core';
-import { TablePagesComponent } from '../../components/table-pages/table-pages.component';
-import { TableFirstLastComponent } from '../../components/table-first-last/table-first-last.component';
-import { HomeService } from './home.service';
-import { UserType } from './home.type';
+import { TablePagesComponent } from '../../../../components/table-pages/table-pages.component';
+import { TableFirstLastComponent } from '../../../../components/table-first-last/table-first-last.component';
+import { UserListService } from './user-list.service';
+import { UserType } from './user-list.type';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.scss',
   standalone: true,
   imports: [
     //Components
     TablePagesComponent,
     TableFirstLastComponent,
   ],
+  host: {
+    class: 'app-host',
+  },
 })
-export class HomeComponent {
+export class UserListComponent {
   //Attributes
   activePage: number = 1;
   parentPageList: number[] = new Array(9);
@@ -24,8 +27,8 @@ export class HomeComponent {
 
   usersList: UserType[] = [];
 
-  constructor(private homeService: HomeService) {
-    this.homeService.getUserFromServer().then((users) => {
+  constructor(private userListService: UserListService) {
+    this.userListService.getUserFromServer().then((users) => {
       this.usersList = users;
     });
   }

@@ -1,0 +1,39 @@
+:host(.app-host) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .app-window{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  
+
+  .header{
+    display: flex;
+    padding: 16px;
+    background: red;
+
+    .title{
+      font-size: x-large;
+      font-weight: bold;
+    }
+  }
+
+  .body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p{
+      font-size: larger;
+      padding: 4px;
+      border-style: dashed;
+      border-color: red;
+    }
+  }
+}
+}
