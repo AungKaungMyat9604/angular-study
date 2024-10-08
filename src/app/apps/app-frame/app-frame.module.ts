@@ -8,6 +8,11 @@ import { UserListComponent } from '../public/components/user-list/user-list.comp
 
 @NgModule({
   declarations: [AppFrameComponent],
-  imports: [CommonModule, RouterOutlet, AppFrameRoutingModule, UserListComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    AppFrameRoutingModule,
+    UserListComponent,
+  ],
 })
 export class AppFrameModule {}

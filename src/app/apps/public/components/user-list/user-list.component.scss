@@ -45,6 +45,37 @@
           padding: 8px;
           background: lightblue;
         }
+
+        .mat-column-no{
+          min-width: 80px;
+          max-width: 80px;
+          text-align: center;
+        }
+
+        .mat-column-name{
+          min-width: 200px;
+          max-width: 200px;
+        }
+
+        .mat-column-age{
+          min-width: 100px;
+          max-width: 100px;
+        }
+
+        .mat-column-gender{
+          min-width: 150px;
+          max-width: 150px;;
+        }
+
+        .mat-column-religion{
+          min-width: 150px;
+          max-width: 150px;;
+        }
+
+        .mat-column-occupation{
+          min-width: 850px;
+          max-width: 850px;
+        }
       }
 
       app-table-pages {
@@ -57,6 +88,10 @@
         background: lightyellow;
         align-items: center;
         justify-content: center;
+
+        .spacer{
+          flex: 1;
+        }
       }
     }
   }

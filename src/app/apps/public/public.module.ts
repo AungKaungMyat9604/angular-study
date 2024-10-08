@@ -7,11 +7,6 @@ import { PublicComponent } from './public.component';
 
 @NgModule({
   declarations: [PublicComponent],
-  imports: [
-    CommonModule,
-    PublicRoutingModule,
-    RouterOutlet,
-    PublicRoutingModule,
-  ],
+  imports: [CommonModule, PublicRoutingModule, RouterOutlet],
 })
 export class PublicModule {}

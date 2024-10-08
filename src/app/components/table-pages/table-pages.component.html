@@ -6,6 +6,7 @@
         [attr.active]="$index + 1 == activePage"
         color="primary"
         (click)="selectPage($index)"
+        [matTooltip]="'Page '+ ($index + 1) "
       >
         {{ $index + 1 }}
       </button>

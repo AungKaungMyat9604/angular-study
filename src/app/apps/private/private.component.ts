@@ -8,8 +8,6 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './private.component.scss',
 })
 export class PrivateComponent {
-  private user: any = null;
-
   constructor(
     private router: Router,
     private authService: AuthService,
