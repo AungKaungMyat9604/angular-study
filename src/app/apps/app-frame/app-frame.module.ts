@@ -5,6 +5,7 @@ import { AppFrameRoutingModule } from './app-frame-routing.module';
 import { AppFrameComponent } from './app-frame.component';
 import { RouterOutlet } from '@angular/router';
 import { UserListComponent } from '../public/components/user-list/user-list.component';
+import { AppDrawerComponent } from './components/app-drawer/app-drawer.component';
 
 @NgModule({
   declarations: [AppFrameComponent],
@@ -13,6 +14,9 @@ import { UserListComponent } from '../public/components/user-list/user-list.comp
     RouterOutlet,
     AppFrameRoutingModule,
     UserListComponent,
+
+    //Component
+    AppDrawerComponent,
   ],
 })
 export class AppFrameModule {}

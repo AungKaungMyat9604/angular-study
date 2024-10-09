@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +13,8 @@ import { TablePagesComponent } from '../../../../components/table-pages/table-pa
 import { UserListService } from './user-list.service';
 import { UserType } from './user-list.type';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-drawer.service';
+import { UserListFilterComponent } from './user-list-filter/user-list-filter.component';
 
 @Component({
   selector: 'app-user-list',
@@ -30,6 +32,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatTooltipModule,
     ReactiveFormsModule,
+
     //Components
     TableFirstLastComponent,
     TablePagesComponent,
@@ -38,7 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     class: 'app-host',
   },
 })
-export class UserListComponent implements AfterViewInit {
+export class UserListComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) tablePaginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -57,16 +60,20 @@ export class UserListComponent implements AfterViewInit {
     'age',
     'gender',
     'race',
-    'religion',
     'occupation',
     'menu',
   ];
+
+  displayedColumns2: string[] = ['religion', 'address'];
 
   userList: UserType[] = [];
   dataSource = new MatTableDataSource<UserType>();
   filteredUserList: UserType[] = [];
 
-  constructor(private userListService: UserListService) {
+  constructor(
+    private userListService: UserListService,
+    private appDrawerService: AppDrawerService,
+  ) {
     this.userListService.getUserFromServer().then((users) => {
       this.dataSource.data = users;
       this.userList = users;
@@ -81,10 +88,19 @@ export class UserListComponent implements AfterViewInit {
       });
     });
   }
+  ngOnDestroy() {
+    this.appDrawerService.setDrawerWidth();
+    this.appDrawerService.setPortalComponent(null);
+    this.appDrawerService.closeDrawer();
+  }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.tablePaginator;
+
+    setTimeout(() => {
+      this.openPortal();
+    });
   }
 
   //Methods
@@ -139,5 +155,15 @@ export class UserListComponent implements AfterViewInit {
     //         this.filteredUserList.push(user);
     //       }
     //     });
+  }
+
+  openDrawer() {
+    this.appDrawerService.openDrawer();
+  }
+
+  openPortal() {
+    this.appDrawerService.setDrawerWidth('400px');
+    this.appDrawerService.setPortalComponent(UserListFilterComponent);
+    this.appDrawerService.openDrawer();
   }
 }

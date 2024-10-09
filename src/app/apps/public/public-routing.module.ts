@@ -19,6 +19,13 @@ const routes: Routes = [
             (c) => c.UserListComponent,
           ),
       },
+      // {
+      //   path: 'drawer',
+      //   loadComponent: () =>
+      //     import('../app-frame/components/app-drawer/app-drawer.component').then(
+      //       (c) => c.AppDrawerComponent,
+      //     ),
+      // },
     ],
   },
 ];
