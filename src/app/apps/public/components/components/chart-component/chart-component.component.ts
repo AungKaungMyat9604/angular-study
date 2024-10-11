@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { ThemeNamesEnum } from '../../../../../resources/enums/theme-enums';
 
 @Component({
   selector: 'app-chart-component',
@@ -37,6 +38,8 @@ export class ChartComponentComponent {
 
   chipOptionListFormControl = new FormControl();
   // chipGridFormControl = new FormControl();
+
+  themeNamesEnum = ThemeNamesEnum;
   loginFormGroup = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -102,7 +105,16 @@ export class ChartComponentComponent {
     event.chipInput.clear();
   }
 
-  changeToDarkMode() {
-    document.body.setAttribute('mode', 'dark');
+  toggleMode() {
+    const mode = document.body.getAttribute('mode');
+    if (mode != 'dark') {
+      document.body.setAttribute('mode', 'dark');
+    } else {
+      document.body.setAttribute('mode', 'light');
+    }
+  }
+
+  changeTheme(theme: ThemeNamesEnum) {
+    document.documentElement.setAttribute('theme', theme);
   }
 }
