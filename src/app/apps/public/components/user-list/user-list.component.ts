@@ -17,6 +17,7 @@ import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-d
 import { UserListFilterComponent } from './user-list-filter/user-list-filter.component';
 import { ChartComponentComponent } from '../components/chart-component/chart-component.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DragDropCdkComponentComponent } from '../components/drag-drop-cdk-component/drag-drop-cdk-component.component';
 
 @Component({
   selector: 'app-user-list',
@@ -39,6 +40,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     TableFirstLastComponent,
     TablePagesComponent,
     ChartComponentComponent,
+    DragDropCdkComponentComponent,
   ],
   host: {
     class: 'app-host',
